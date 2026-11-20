@@ -1,0 +1,16 @@
+{
+  "name": "@agency/brand-client-beta",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" },
+    "./native": { "types": "./dist/native.d.ts", "import": "./dist/native.js" },
+    "./tokens.json": "./brand.tokens.json"
+  },
+  "files": ["dist", "brand.tokens.json"],
+  "scripts": { "build": "tsc -p tsconfig.json" },
+  "dependencies": { "@agency/themes": "workspace:*" },
+  "devDependencies": { "typescript": "^5.7.2" }
+}

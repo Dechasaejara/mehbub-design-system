@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Agency brand tokens",
+  "type": "object",
+  "required": ["name", "colors", "typography", "radius"],
+  "properties": {
+    "name": { "type": "string" },
+    "colors": {
+      "type": "object",
+      "required": ["primary", "onPrimary", "background", "surface", "text", "muted", "border"],
+      "properties": {
+        "primary": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
+        "onPrimary": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
+        "background": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
+        "surface": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
+        "text": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
+        "muted": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
+        "border": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" }
+      },
+      "additionalProperties": true
+    },
+    "typography": { "type": "object" },
+    "radius": { "type": "object" }
+  },
+  "additionalProperties": true
+}

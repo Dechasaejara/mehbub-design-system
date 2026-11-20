@@ -1,0 +1,10 @@
+{
+  "name": "@agency/cli",
+  "version": "0.1.0",
+  "private": false,
+  "type": "module",
+  "bin": { "agency": "./dist/index.js" },
+  "main": "./dist/index.js",
+  "scripts": { "build": "tsc -p tsconfig.json" },
+  "devDependencies": { "@types/node": "^22.10.2", "typescript": "^5.7.2" }
+}

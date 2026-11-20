@@ -1,0 +1,26 @@
+import type { AgencyTheme } from "@agency/themes";
+
+    export const ClientBetaTheme: AgencyTheme = {
+  "name": "Client Beta",
+  "colors": {
+    "primary": "#9B603D",
+    "onPrimary": "#FFFFFF",
+    "background": "#FFF9F2",
+    "surface": "#F5EBDD",
+    "text": "#33241D",
+    "muted": "#806B5D",
+    "border": "#E6D6C6",
+    "danger": "#B42318",
+    "success": "#26734D"
+  },
+  "typography": {
+    "fontFamily": "Inter, system-ui, sans-serif",
+    "headingFamily": "Georgia, serif"
+  },
+  "radius": {
+    "sm": "2px",
+    "md": "6px",
+    "lg": "10px",
+    "pill": "9999px"
+  }
+} as const;

@@ -1,0 +1,7 @@
+{
+  "scripts": {
+    "agency:init": "node scripts/init.mjs",
+    "agency:doctor": "node scripts/doctor.mjs",
+    "agency:create-client": "node scripts/create-client.mjs"
+  }
+}

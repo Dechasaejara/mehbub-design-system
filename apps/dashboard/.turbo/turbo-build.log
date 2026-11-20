@@ -1,0 +1,33 @@
+ WARN  Issue while reading "C:\Users\Decha\Desktop\dev\Mehbub-design-platform\.npmrc". Failed to replace env in config: ${NODE_AUTH_TOKEN}
+
+> @agency/dashboard@0.1.0 build C:\Users\Decha\Desktop\dev\Mehbub-design-platform\apps\dashboard
+> next build
+
+   ▲ Next.js 15.5.29
+
+   Creating an optimized production build ...
+Failed to compile.
+
+../../packages/react/dist/provider.js
+Error:   [31mx[0m You're importing a component that needs `createContext`. This React Hook only works in a Client Component. To fix, mark the file (or its parent) with the `"use client"` directive.
+  [31m|[0m
+  [31m|[0m  Learn more: https://nextjs.org/docs/app/api-reference/directives/use-client
+  [31m|[0m
+
+   ,-[[36;1;4mC:\Users\Decha\Desktop\dev\Mehbub-design-platform\packages\react\dist\provider.js[0m:2:1]
+ [2m1[0m | import { jsx as _jsx } from "react/jsx-runtime";
+ [2m2[0m | import { createContext, useContext, useMemo } from "react";
+   : [35;1m         ^^^^^^^^^^^^^[0m
+ [2m3[0m | import { defaultTheme, themeToCssVariables } from "@agency/themes";
+ [2m4[0m | const ThemeContext = createContext(defaultTheme);
+ [2m5[0m | export function AgencyProvider({ theme = defaultTheme, children }) {
+   `----
+
+Import trace for requested module:
+../../packages/react/dist/provider.js
+../../packages/react/dist/index.js
+./app/page.tsx
+
+
+> Build failed because of webpack errors
+ ELIFECYCLE  Command failed with exit code 1.

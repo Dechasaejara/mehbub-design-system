@@ -1,0 +1,5 @@
+ WARN  Issue while reading "C:\Users\Decha\Desktop\dev\Mehbub-design-platform\.npmrc". Failed to replace env in config: ${NODE_AUTH_TOKEN}
+
+> @agency/brand-client-alpha@0.1.0 build C:\Users\Decha\Desktop\dev\Mehbub-design-platform\packages\brand-client-alpha
+> tsc -p tsconfig.json
+
