@@ -1,6 +1,6 @@
-import type { AgencyTheme } from "@agency/themes";
+import type { AgencyTheme } from "@dechasaejara/themes";
 
-    export const ClientBetaTheme: AgencyTheme = {
+export const ClientBetaTheme: AgencyTheme = {
   "name": "Client Beta",
   "colors": {
     "primary": "#9B603D",
@@ -22,5 +22,61 @@ import type { AgencyTheme } from "@agency/themes";
     "md": "6px",
     "lg": "10px",
     "pill": "9999px"
+  },
+  "modes": {
+    "dark": {
+      "primary": "#F0B78F",
+      "onPrimary": "#2B1B12",
+      "background": "#211811",
+      "surface": "#33251B",
+      "text": "#FFF7EF",
+      "muted": "#D6BCA7",
+      "border": "#514031",
+      "danger": "#FF9B91",
+      "success": "#79D0A4"
+    }
+  },
+  "spacing": {
+    "1": "4px",
+    "2": "8px",
+    "3": "12px",
+    "4": "16px",
+    "6": "24px",
+    "8": "32px"
+  },
+  "shadows": {
+    "sm": {
+      "color": "#0F172A",
+      "offsetX": 0,
+      "offsetY": 1,
+      "blur": 2,
+      "spread": 0,
+      "opacity": 0.1
+    },
+    "md": {
+      "color": "#0F172A",
+      "offsetX": 0,
+      "offsetY": 4,
+      "blur": 12,
+      "spread": 0,
+      "opacity": 0.16
+    }
+  },
+  "components": {
+    "button": {
+      "radius": "6px",
+      "paddingX": "16px",
+      "paddingY": "10px",
+      "fontWeight": 600
+    },
+    "card": {
+      "radius": "10px",
+      "padding": "16px"
+    },
+    "input": {
+      "radius": "6px",
+      "paddingX": "12px",
+      "paddingY": "10px"
+    }
   }
-} as const;
+};

@@ -1,8 +1,8 @@
 {
-  "name": "@agency/docs",
+  "name": "@dechasaejara/docs",
   "version": "0.1.0",
   "private": true,
   "scripts": { "dev": "storybook dev -p 6006", "build": "storybook build -o storybook-static" },
-  "dependencies": { "@agency/react": "workspace:*", "@agency/brand-client-alpha": "workspace:*", "react": "^19.0.0", "react-dom": "^19.0.0" },
+  "dependencies": { "@dechasaejara/react": "workspace:*", "@dechasaejara/brand-client-alpha": "workspace:*", "react": "^19.0.0", "react-dom": "^19.0.0" },
   "devDependencies": { "@storybook/react": "^8.4.7", "@storybook/react-vite": "^8.4.7", "storybook": "^8.4.7", "typescript": "^5.7.2", "vite": "^6.0.5" }
 }

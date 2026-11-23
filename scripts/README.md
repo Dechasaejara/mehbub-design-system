@@ -1,4 +1,4 @@
-# Agency Toolkit Scripts
+﻿# Agency Toolkit Scripts
 
 Drop the `scripts/` folder into the root of your agency design-platform monorepo.
 
@@ -63,8 +63,8 @@ The script deliberately does not overwrite existing files. If a target file alre
 ## Important
 
 The generated code assumes the published packages expose the APIs in this repository starter:
-- `@agency/react`: `AgencyProvider`, `Button`, `Card`, `Input`, and `styles.css`
-- `@agency/react-native`: `AgencyNativeProvider`, `Button`, `Card`, `Input`
-- `@agency/brand-<client-slug>`: `Client<PascalSlug>Theme` and `./native` export
+- `@dechasaejara/react`: `AgencyProvider`, `Button`, `Card`, `Input`, and `styles.css`
+- `@dechasaejara/react-native`: `AgencyNativeProvider`, `Button`, `Card`, `Input`
+- `@dechasaejara/brand-<client-slug>`: `Client<PascalSlug>Theme` and `./native` export
 
 Confirm the exported theme names and package versions match your actual published packages before using this in production. The current starter's brand package naming/export conventions should be standardized before the first release.

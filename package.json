@@ -14,8 +14,14 @@
     "format": "prettier --write .",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "pnpm build && changeset publish"
-
+    "release": "changeset publish",
+    "validate:packages": "node scripts/validate-packages.mjs",
+    "build:report": "node scripts/build-report.mjs",
+    "generate:component": "node scripts/generate-component.mjs",
+    "generate:theme": "node scripts/generate-theme.mjs",
+    "tokens:validate": "node scripts/tokens.mjs validate",
+    "tokens:build": "node scripts/tokens.mjs build",
+    "docs:build": "pnpm --filter @dechasaejara/docs build"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.12",

@@ -1,16 +1,36 @@
 {
-  "name": "@agency/brand-client-beta",
+  "name": "@dechasaejara/brand-client-beta",
   "version": "0.1.0",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
-    ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" },
-    "./native": { "types": "./dist/native.d.ts", "import": "./dist/native.js" },
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./native": {
+      "types": "./dist/native.d.ts",
+      "import": "./dist/native.js"
+    },
     "./tokens.json": "./brand.tokens.json"
   },
-  "files": ["dist", "brand.tokens.json"],
-  "scripts": { "build": "tsc -p tsconfig.json" },
-  "dependencies": { "@agency/themes": "workspace:*" },
-  "devDependencies": { "typescript": "^5.7.2" }
+  "files": [
+    "dist",
+    "brand.tokens.json"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@dechasaejara/themes": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  }
 }

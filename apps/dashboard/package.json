@@ -1,8 +1,23 @@
 {
-  "name": "@agency/dashboard",
+  "name": "@dechasaejara/dashboard",
   "version": "0.1.0",
   "private": true,
-  "scripts": { "dev": "next dev", "build": "next build", "start": "next start" },
-  "dependencies": { "next": "^15.1.3", "react": "^19.0.0", "react-dom": "^19.0.0", "@agency/react": "workspace:*", "@agency/brand-client-alpha": "workspace:*" },
-  "devDependencies": { "@types/react": "^19.0.0", "typescript": "^5.7.2" }
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "^15.1.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "@dechasaejara/react": "workspace:*",
+    "@dechasaejara/brand-client-alpha": "workspace:*",
+    "@dechasaejara/brand-client-beta": "workspace:*",
+    "@dechasaejara/themes": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "typescript": "^5.7.2"
+  }
 }

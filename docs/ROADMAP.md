@@ -14,7 +14,8 @@
 ## Next engineering milestones
 - [ ] Generate and commit pnpm-lock.yaml (required before enabling frozen-lockfile CI)
 - [ ] Run install/build/test in CI and resolve platform/toolchain issues
-- [ ] Add token JSON schema validation and Style Dictionary outputs
+- [x] Validate brand token JSON and generate CSS, TypeScript, and React Native token outputs
+- [ ] Adopt Style Dictionary for token transformations once its dependency and frozen lockfile can be updated together
 - [ ] Add component coverage, keyboard tests, accessibility checks
 - [ ] Add native Expo example and React Native Storybook
 - [ ] Add dashboard authentication, RBAC, persistence, audit log

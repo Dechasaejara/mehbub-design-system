@@ -1,0 +1,84 @@
+// Generated from ../brand.tokens.json. Do not edit by hand.
+export const brandTokens = {
+  "name": "Client Beta",
+  "colors": {
+    "primary": "#9B603D",
+    "onPrimary": "#FFFFFF",
+    "background": "#FFF9F2",
+    "surface": "#F5EBDD",
+    "text": "#33241D",
+    "muted": "#806B5D",
+    "border": "#E6D6C6",
+    "danger": "#B42318",
+    "success": "#26734D"
+  },
+  "typography": {
+    "fontFamily": "Inter, system-ui, sans-serif",
+    "headingFamily": "Georgia, serif"
+  },
+  "radius": {
+    "sm": "2px",
+    "md": "6px",
+    "lg": "10px",
+    "pill": "9999px"
+  },
+  "modes": {
+    "dark": {
+      "primary": "#F0B78F",
+      "onPrimary": "#2B1B12",
+      "background": "#211811",
+      "surface": "#33251B",
+      "text": "#FFF7EF",
+      "muted": "#D6BCA7",
+      "border": "#514031",
+      "danger": "#FF9B91",
+      "success": "#79D0A4"
+    }
+  },
+  "spacing": {
+    "1": "4px",
+    "2": "8px",
+    "3": "12px",
+    "4": "16px",
+    "6": "24px",
+    "8": "32px"
+  },
+  "shadows": {
+    "sm": {
+      "color": "#0F172A",
+      "offsetX": 0,
+      "offsetY": 1,
+      "blur": 2,
+      "spread": 0,
+      "opacity": 0.1
+    },
+    "md": {
+      "color": "#0F172A",
+      "offsetX": 0,
+      "offsetY": 4,
+      "blur": 12,
+      "spread": 0,
+      "opacity": 0.16
+    }
+  },
+  "components": {
+    "button": {
+      "radius": "6px",
+      "paddingX": "16px",
+      "paddingY": "10px",
+      "fontWeight": 600
+    },
+    "card": {
+      "radius": "10px",
+      "padding": "16px"
+    },
+    "input": {
+      "radius": "6px",
+      "paddingX": "12px",
+      "paddingY": "10px"
+    }
+  }
+} as const;
+export const nativeColors = brandTokens.colors;
+export const nativeSpacing = brandTokens.spacing ?? {};
+export const nativeRadius = brandTokens.radius;

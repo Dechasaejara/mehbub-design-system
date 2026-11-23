@@ -1,26 +1,57 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Agency brand tokens",
+  "$id": "https://mehubub.dev/schemas/brand-tokens.schema.json",
+  "title": "Mehubub brand tokens",
   "type": "object",
   "required": ["name", "colors", "typography", "radius"],
   "properties": {
-    "name": { "type": "string" },
+    "name": { "type": "string", "minLength": 1 },
+    "colors": { "$ref": "#/$defs/colors" },
+    "modes": {
+      "type": "object",
+      "properties": { "light": { "$ref": "#/$defs/modeColors" }, "dark": { "$ref": "#/$defs/modeColors" } },
+      "additionalProperties": false
+    },
+    "typography": {
+      "type": "object",
+      "required": ["fontFamily"],
+      "properties": { "fontFamily": { "type": "string", "minLength": 1 }, "headingFamily": { "type": "string", "minLength": 1 } },
+      "additionalProperties": true
+    },
+    "spacing": { "type": "object", "additionalProperties": { "$ref": "#/$defs/length" } },
+    "radius": {
+      "type": "object",
+      "required": ["sm", "md", "lg", "pill"],
+      "properties": { "sm": { "$ref": "#/$defs/length" }, "md": { "$ref": "#/$defs/length" }, "lg": { "$ref": "#/$defs/length" }, "pill": { "$ref": "#/$defs/length" } },
+      "additionalProperties": { "$ref": "#/$defs/length" }
+    },
+    "shadows": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/$defs/shadow" }
+    },
+    "components": { "type": "object", "additionalProperties": { "type": "object", "additionalProperties": { "type": ["string", "number"] } } }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "color": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
     "colors": {
       "type": "object",
       "required": ["primary", "onPrimary", "background", "surface", "text", "muted", "border"],
       "properties": {
-        "primary": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
-        "onPrimary": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
-        "background": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
-        "surface": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
-        "text": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
-        "muted": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" },
-        "border": { "type": "string", "pattern": "^#[0-9A-Fa-f]{6}$" }
+        "primary": { "$ref": "#/$defs/color" }, "onPrimary": { "$ref": "#/$defs/color" },
+        "background": { "$ref": "#/$defs/color" }, "surface": { "$ref": "#/$defs/color" },
+        "text": { "$ref": "#/$defs/color" }, "muted": { "$ref": "#/$defs/color" },
+        "border": { "$ref": "#/$defs/color" }, "danger": { "$ref": "#/$defs/color" }, "success": { "$ref": "#/$defs/color" }
       },
-      "additionalProperties": true
+      "additionalProperties": false
     },
-    "typography": { "type": "object" },
-    "radius": { "type": "object" }
-  },
-  "additionalProperties": true
+    "modeColors": { "type": "object", "properties": { "primary": { "$ref": "#/$defs/color" }, "onPrimary": { "$ref": "#/$defs/color" }, "background": { "$ref": "#/$defs/color" }, "surface": { "$ref": "#/$defs/color" }, "text": { "$ref": "#/$defs/color" }, "muted": { "$ref": "#/$defs/color" }, "border": { "$ref": "#/$defs/color" }, "danger": { "$ref": "#/$defs/color" }, "success": { "$ref": "#/$defs/color" } }, "additionalProperties": false },
+    "length": { "oneOf": [{ "type": "number", "minimum": 0 }, { "type": "string", "minLength": 1 }] },
+    "shadow": {
+      "type": "object",
+      "required": ["color", "offsetX", "offsetY", "blur", "opacity"],
+      "properties": { "color": { "$ref": "#/$defs/color" }, "offsetX": { "type": "number" }, "offsetY": { "type": "number" }, "blur": { "type": "number", "minimum": 0 }, "spread": { "type": "number" }, "opacity": { "type": "number", "minimum": 0, "maximum": 1 } },
+      "additionalProperties": false
+    }
+  }
 }

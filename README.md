@@ -41,21 +41,21 @@ pnpm test
 Run individual applications/packages:
 
 ```bash
-pnpm --filter @agency/docs dev
-pnpm --filter @agency/dashboard dev
-pnpm --filter @agency/cli build
+pnpm --filter @dechasaejara/docs dev
+pnpm --filter @dechasaejara/dashboard dev
+pnpm --filter @dechasaejara/cli build
 ```
 
 ## Use web components
 
 ```tsx
-import { AgencyProvider, Button, Card, Input } from "@agency/react";
-import "@agency/react/styles.css";
-import { clientAlphaTheme } from "@agency/brand-client-alpha";
+import { AgencyProvider, Button, Card, Input } from "@dechasaejara/react";
+import "@dechasaejara/react/styles.css";
+import { ClientAlphaTheme } from "@dechasaejara/brand-client-alpha";
 
 export function ContactPanel() {
   return (
-    <AgencyProvider theme={clientAlphaTheme}>
+    <AgencyProvider theme={ClientAlphaTheme}>
       <Card>
         <Input label="Email" placeholder="you@example.com" />
         <Button>Send inquiry</Button>
@@ -70,12 +70,12 @@ The example brand package is a workspace package in this starter. In client appl
 ## Use React Native components
 
 ```tsx
-import { AgencyNativeProvider, Button, Card, Input } from "@agency/react-native";
-import { clientAlphaNativeTheme } from "@agency/brand-client-alpha/native";
+import { AgencyNativeProvider, Button, Card, Input } from "@dechasaejara/react-native";
+import { ClientAlphaNativeTheme } from "@dechasaejara/brand-client-alpha/native";
 
 export function ContactScreen() {
   return (
-    <AgencyNativeProvider theme={clientAlphaNativeTheme}>
+    <AgencyNativeProvider theme={ClientAlphaNativeTheme}>
       <Card>
         <Input placeholder="Email address" />
         <Button title="Send inquiry" />
@@ -88,11 +88,19 @@ export function ContactScreen() {
 ## Create a client starter
 
 ```bash
-pnpm --filter @agency/cli build
+pnpm --filter @dechasaejara/cli build
 node packages/cli/dist/index.js create-client --name client-new --preset corporate --framework next
 ```
 
 The CLI creates a starter folder in the current working directory. It does not create GitHub repositories or publish packages automatically.
+
+## CLI workflows
+
+The published `@dechasaejara/cli` package provides `agency init`, `agency doctor`, `agency components`, `agency add`, and `agency create-client`. For example, preview integration changes with `agency init --framework next --brand client-alpha --dry-run`, then run `agency init` without `--dry-run` to install packages and create setup files. See [the CLI guide](packages/cli/README.md) for options and examples.
+
+## Validate and build brand tokens
+
+Run `pnpm tokens:validate` to check every `packages/brand-*/brand.tokens.json` against the token contract. Run `pnpm tokens:build` to validate and generate CSS custom properties plus TypeScript and React Native token exports under each brand package's `generated/` folder. The generated files are derived artifacts; edit `brand.tokens.json` and rebuild them.
 
 ## Git workflow
 
@@ -109,7 +117,7 @@ Configure these GitHub repository secrets/permissions:
 - Package publishing workflow requires `packages: write`.
 - Consumers need a GitHub token with `read:packages` and access to the private package.
 
-Set package names to `@agency/<package>` and publish to GitHub Packages. Before first release, confirm the organization/package visibility and access policies in GitHub.
+Set package names to `@dechasaejara/<package>` and publish to GitHub Packages. Before first release, confirm the organization/package visibility and access policies in GitHub.
 
 ## Important production work before adopting
 
@@ -123,3 +131,34 @@ This repository is a runnable starter foundation, not a claim of a fully audited
 - Review client contracts, IP ownership, licenses, and package access.
 - Add real dashboard authentication, authorization, audit logs, and persistence before storing client data.
 # mehbub-design-system
+
+## Private registry authentication
+
+Add this to the consuming project's `.npmrc` (do not commit a token):
+
+```ini
+@dechasaejara:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}
+```
+
+Use a GitHub token with `read:packages` and access to the package. Set `NODE_AUTH_TOKEN` through your shell or CI secret store. Install only the packages your platform needs:
+
+```bash
+pnpm add @dechasaejara/react @dechasaejara/brand-client-alpha
+# Or for Expo / React Native:
+pnpm add @dechasaejara/react-native @dechasaejara/brand-client-alpha
+```
+
+## Workspace generators
+
+```bash
+pnpm generate:component Button
+pnpm generate:theme client-greenfield
+pnpm validate:packages
+pnpm build:report
+pnpm docs:build
+```
+
+The theme generator creates a token draft only. A developer must add a package manifest and TypeScript theme entry point before that brand can be imported. The client folder generator is available as `pnpm create-client --name client-new`; no `@mehbub/create-app` package is implemented or published.
+
+For a private client app, pin package versions after review and use Changesets for releases. Client applications are not deployed by this repository's workflows. Documentation and Storybook deploy independently through GitHub Pages; enable Pages with GitHub Actions as its source. Set a required reviewer on the `package-release` GitHub environment to approve production package releases.

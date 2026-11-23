@@ -1,4 +1,4 @@
-# Release process
+﻿# Release process
 
 1. Create a feature branch.
 2. Make the change and tests.

@@ -1,4 +1,4 @@
-# Architecture and boundaries
+﻿# Architecture and boundaries
 
 ## Package dependency direction
 
