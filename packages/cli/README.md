@@ -11,15 +11,17 @@ pnpm exec agency --help
 
 ### Integrate a project
 
-Run from the root of a React, Next.js, Expo, or React Native app. `init` detects pnpm, Yarn, or npm from lockfiles and installs the matching UI and brand packages. It does not overwrite existing provider files.
+Run from the root of a React, Next.js, Expo, or React Native app. `init` detects the framework, brand dependency, and package manager. It installs missing packages, configures GitHub Packages in `.npmrc`, creates the provider, imports global CSS in the right place, and wires `AppProviders` into a standard Next.js App Router root layout. It preserves provider files and reports when a nonstandard layout needs manual attention.
 
 ```sh
-agency init --framework next --brand client-alpha --version 0.1.0
-agency init --framework react --brand client-alpha --dry-run
+agency init --brand client-alpha --dry-run
+agency init --framework next --brand client-alpha --version 0.1.1
 agency init --framework expo --brand client-alpha
 ```
 
-For private GitHub Packages, configure `.npmrc` and set `NODE_AUTH_TOKEN` in the shell/CI environment before installing packages. Never commit the token.
+For private GitHub Packages, provide `NODE_AUTH_TOKEN` in the shell/CI environment. The CLI can also read that variable from the app's `.env.local` or `.env` for the install subprocess without printing it. Never commit the token.
+
+Use `--version <semver>` to upgrade already-installed packages. Use `--skip-install` when packages are managed separately, or `--dry-run` to preview package and file changes.
 
 ### Diagnose integration
 

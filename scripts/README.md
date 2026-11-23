@@ -1,4 +1,9 @@
-﻿# Agency Toolkit Scripts
+# Agency Toolkit Scripts
+
+## Deploy a design-system release
+
+From a feature branch, run `pnpm run deploy:design-system`. The script stages only Changesets, packages, dashboard/docs app source, docs, README, and scripts; excludes `.turbo` logs and unrelated files; pushes the branch; creates and merges the code PR after checks; merges the Changesets release PR; and waits for package publishing to finish. It requires GitHub CLI (`winget install --id GitHub.cli --exact`, then `gh auth login`) and asks for `DEPLOY` before pushing. If GitHub pauses the publish job for the `package-release` environment, approve it in Actions when prompted. The script will not bypass that environment approval.
+
 
 Drop the `scripts/` folder into the root of your agency design-platform monorepo.
 
