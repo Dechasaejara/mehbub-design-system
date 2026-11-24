@@ -27,9 +27,12 @@ try {
   $preStaged = @(git diff --cached --name-only)
   if ($preStaged.Count -gt 0) { throw "The Git index already has staged files. Unstage/review them before running this deployment script." }
 
-  # Stage only project source, release notes, and docs. Secrets, generated artifacts,
-  # local build output, and unrelated files such as prompt.md are deliberately excluded.
-  Invoke-Git @("add", "-A", "--", ".changeset", "packages", "apps/dashboard/app", "apps/docs/app", "docs", "README.md", "scripts")
+  # Stage only existing project source, release notes, and docs. Secrets, generated
+  # artifacts, local build output, and unrelated files such as prompt.md are excluded.
+  $stagePaths = @(".changeset", "packages", "apps/dashboard/app", "apps/docs/app", "docs", "README.md", "package.json", "scripts") |
+    Where-Object { Test-Path -LiteralPath $_ }
+  if ($stagePaths.Count -eq 0) { throw "No recognized project paths were found to stage." }
+  Invoke-Git (@("add", "-A", "--") + $stagePaths)
   $generated = @(git ls-files ":(glob)**/.turbo/**" ":(glob)**/dist/**" ":(glob)**/build/**" ":(glob)**/coverage/**")
   if ($generated.Count -gt 0) { Invoke-Git (@("restore", "--staged", "--") + $generated) }
 
